@@ -1,26 +1,41 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
+import Header from "./Header";
+import MovieCards from './MoviesCards';
+import AddMovie from './AddMovie';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+  }
+  }
+
+  add = () => {
+    this.props.addNewMovie(this.state);
+    this.setState({ show: false });
+  };
+
+  searchMovie = movietitle => {
+    this.setState({
+      keyword : movietitle
+    });
+  };
+
+  render() {
+    return (
+      <div className="App">
+        <Header/>
+        <AddMovie edit={false} />
+        <MovieCards/>
+        
+      </div>
+    );
+  }
+
 }
+
 
 export default App;
